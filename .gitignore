@@ -84,6 +84,8 @@ server/.env
 server/.env.*
 !server/.env.example
 
+# Uploads (if backend stores files)
+uploads/
 
 # MongoDB VSCode extension
 .vscode/mongodbConnection.json
