@@ -89,3 +89,7 @@ uploads/
 
 # MongoDB VSCode extension
 .vscode/mongodbConnection.json
+
+
+client/node_modules/
+server/node_modules/
