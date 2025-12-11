@@ -18,7 +18,7 @@ const App = () => {
       <Route path="/otp-verification/:email" element={<OTP/>} />
       <Route path="/password/reset/:token" element={<ResetPassword/>} />
     </Routes>
-    <ToastContainer />
+    <ToastContainer theme="dark"/>
   </Router>
   );
 };
