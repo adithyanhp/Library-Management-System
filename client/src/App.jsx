@@ -6,9 +6,10 @@ import Login from "./pages/Login"
 import OTP from "./pages/OTP"
 import Register from "./pages/Register"
 import ResetPassword from "./pages/ResetPassword"
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
-  return <Router>
+  return ( <Router>
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/login" element={<Login/>} />
@@ -17,7 +18,9 @@ const App = () => {
       <Route path="/otp-verification/:email" element={<OTP/>} />
       <Route path="/password/reset/:token" element={<ResetPassword/>} />
     </Routes>
-  </Router>;
+    <ToastContainer />
+  </Router>
+  );
 };
 
 export default App;
