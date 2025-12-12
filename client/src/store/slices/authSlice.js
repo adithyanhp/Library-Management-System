@@ -8,6 +8,18 @@ const authSlice = createSlice({
         loading: false,
         error: null,
         message: null,
-        user: null
-    }
-})
+        user: null,
+        isAuthenticated: false,
+    },
+    reducers: {
+        registerRequest(state){
+            state.loading = true;
+            state.error = null;
+            state.message = null; 
+        },
+        registerSuccess(state, action){
+            state.loading = false;
+            state.message = action.payload.message;
+        },
+    },
+});
