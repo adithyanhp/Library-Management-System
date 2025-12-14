@@ -21,5 +21,9 @@ const authSlice = createSlice({
             state.loading = false;
             state.message = action.payload.message;
         },
+        registerFailed(state, action){
+            state.loading = false;
+            state.error = action.payload;
+        },
     },
 });
