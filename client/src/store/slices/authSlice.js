@@ -48,7 +48,7 @@ export const register = (data) => async(dispatch) =>{
 
 export const otpVerification = (email, otp) => async(dispatch) =>{
     dispatch(authSlice.actions.otpVerificationRequest());
-    await axios.post("", {email, otp}, {
+    await axios.post("https://localhost:4000/api/v1/auth/verify-otp", {email, otp}, {
         withCredentials: true,
         headers: {
             "Content-Type": "application/json",
