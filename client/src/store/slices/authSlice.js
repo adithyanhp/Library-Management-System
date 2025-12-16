@@ -27,6 +27,21 @@ const authSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        loginRequest(state){
+            state.loading = true;
+            state.error = null;
+            state.message = null; 
+        },
+        loginSuccess(state, action){
+            state.loading = false;
+            state.message = action.payload.message;
+            state.isAuthenticated = true;
+            state.user = action.payload.user;
+        },
+        loginFailed(state, action){
+            state.loading = false;
+            state.error = action.payload;
+        },
     },
 });
 
@@ -57,5 +72,19 @@ export const otpVerification = (email, otp) => async(dispatch) =>{
         dispatch(authSlice.actions.otpVerificationSuccess(res.data));
     }).catch(err => {
         authSlice.actions.otpVerificationFailed(error.response.data.message);
+    });
+};
+
+export const login = (data) => async(dispatch) =>{
+    dispatch(authSlice.actions.loginRequest());
+    await axios.post("https://localhost:4000/api/v1/auth/login", data, {
+        withCredentials: true,
+        headers: {
+            "Content-Type": "application/json",
+        }
+    }).then(res => {
+        dispatch(authSlice.actions.loginSuccess(res.data));
+    }).catch(err => {
+        authSlice.actions.loginFailed(error.response.data.message);
     });
 };
