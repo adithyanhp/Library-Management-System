@@ -42,6 +42,22 @@ const authSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        logoutRequest(state){
+            state.loading=true;
+            state.message=null;
+            state.error=null;
+        },
+        logoutSuccess(state, action){
+            state.loading = false;
+            state.message = action.payload;
+            state.isAuthenticated = false;
+            state.user = null;
+        },
+        logoutFailed(state, action){
+            state.loading = false;
+            state.error=action.payload;
+            state.message = null;
+        }
     },
 });
 
