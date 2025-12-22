@@ -104,3 +104,17 @@ export const login = (data) => async(dispatch) =>{
         authSlice.actions.loginFailed(error.response.data.message);
     });
 };
+
+export const logout = () => async(dispatch) =>{
+    dispatch(authSlice.actions.loginRequest());
+    await axios.post("https://localhost:4000/api/v1/auth/login", data, {
+        withCredentials: true,
+        headers: {
+            "Content-Type": "application/json",
+        }
+    }).then(res => {
+        dispatch(authSlice.actions.loginSuccess(res.data));
+    }).catch(err => {
+        authSlice.actions.loginFailed(error.response.data.message);
+    });
+};
